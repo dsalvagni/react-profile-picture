@@ -10,7 +10,7 @@ class Message extends Component {
     return (
       <div className={style.message}>
         {this.props.onClick ? (
-          <button className={style['message_button']} onClick={this.props.onClick}>
+          <button className={style['message__button']} onClick={this.props.onClick}>
             <div className={style["message__content"]}>{this.props.children}</div>
           </button>
         ) : (
