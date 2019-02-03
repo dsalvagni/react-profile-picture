@@ -117,11 +117,14 @@ class App extends Component {
   render() {
     return (
         <div className="App">
+        <header className="Header">
+          <a href="https://github.com/dsalvagni/react-profile-picture">Go to @dsalvagni/react-profile-picture</a>
+        </header>
         <div className="Demo">
           <div className="Card">
             <ProfilePicture
               ref={this.profilePictureRef}
-              frameFormat="circle"
+              frameFormat={this.state.frame}
               image={example}
               debug={this.state.debug}
               useHelper={true}
@@ -131,11 +134,19 @@ class App extends Component {
             />
             <hr />
             <small>Picture from <a href="https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event" target="_blank" rel="noopener noreferrer">
-            https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event</a></small>
+            https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event</a></small> <br />
+            <small>Icons generated from <a href="https://icomoon.io/app" target="_blank" rel="noopener noreferrer">https://icomoon.io/app</a></small>
           </div>
           {this.state.hasImage ? this.renderOptions() : null}
           </div>
           <div className="container">
+
+          <h1>react-profile-picture</h1>
+          <p>Simple way to crop your profile picture. <br/> A React version of <a href="https://github.com/dsalvagni/profile-picture">profile-picture</a></p>
+
+          <hr />
+
+          <h1>Example</h1>
             <SyntaxHighlighter language='javascript' style={atomDark}>
 {`
 import React, { Component } from 'react';
@@ -172,11 +183,16 @@ class App extends Component {
 }
 `}
             </SyntaxHighlighter>
+
+            <h1>Options</h1>
+            <p><a href="https://github.com/dsalvagni/react-profile-picture">Find the options and other info here.</a></p>
           </div>
+          <footer>
+            Made with <span role="img" aria-labelledby="red heart">❤️</span> and <span role="img" aria-labelledby="snowflake">❄️</span> by <a href="https://twitter.com/danielsalvagni">@danielsalvagni</a>.
+          </footer>
         </div>
     );
   }
 }
-
 
 export default App;
