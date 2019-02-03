@@ -59,6 +59,10 @@
     cursor: pointer;
   }
 
+  &__canvas {
+    cursor: move;
+  }
+
   &__canvas,
   &__canvas-helper {
     position: absolute;

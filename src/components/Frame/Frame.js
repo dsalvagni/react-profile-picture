@@ -5,7 +5,12 @@ import stylesheet from "./Frame.scss";
 
 class Frame extends Component {
   render() {
-    const cssClasses = [stylesheet["frame"], [`frame--${this.props.format}`]];
+    const framesMap = {
+      circle: stylesheet["frame--circle"],
+      square: stylesheet["frame--square"],
+      "rounded-square": stylesheet["frame--rounded-square"]
+    }
+    const cssClasses = [stylesheet["frame"], framesMap[this.props.format]];
     const style = {
       width: `${this.props.size}px`,
       height: `${this.props.size}px`

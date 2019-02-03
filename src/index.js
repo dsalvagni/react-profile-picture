@@ -40,7 +40,8 @@ class ProfilePicture extends Component {
     this.state = {
       status: Status.EMPTY,
       loadedData: {},
-      imageData: {}
+      imageData: {},
+      file: props.image
     };
 
     if (props.image) {
@@ -217,6 +218,11 @@ class ProfilePicture extends Component {
       },
       onLoadEnd: data => {
         const { base64Image } = data;
+
+        const state = {...this.state}
+        state.file = file;
+        this.setState(state);
+        
         this.processFile(base64Image);
         this.debug("[onLoadEnd]", { data });
       }
