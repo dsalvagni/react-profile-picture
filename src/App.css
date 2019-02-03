@@ -16,21 +16,6 @@
   background: #008DD5;
   padding: 20px 0px 80px 0;
 }
-.Demo h1 {
-  padding: 10px 0;
-  color: #FFF;
-  text-align: center;
-}
-
-.Demo p {
-  text-align: center;
-  color: #FFF;
-  padding: 2px 0 30px 0;
-}
-.Demo a {
-  color:#333;
-}
-
 .Card {
   background: #FFF;
   margin: 0 auto;
