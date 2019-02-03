@@ -1,0 +1,10 @@
+const Status = {
+    EMPTY: "EMPTY",
+    LOADING: "LOADING",
+    DRAGOVER: "DRAGOVER",
+    INVALID_FILE_TYPE: "INVALID_FILE_TYPE",
+    INVALID_IMAGE_SIZE: "INVALID_IMAGE_SIZE",
+    LOADED: "LOADED"
+}
+
+export default Status;

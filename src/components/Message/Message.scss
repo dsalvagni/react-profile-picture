@@ -1,0 +1,41 @@
+@import "../../sass/base";
+.message {
+  position: absolute;
+  left: 0px;
+  right: 0px;
+  top: 0;
+  bottom: 0;
+  color: color(primary);
+  text-align: center;
+  z-index: 3;
+  user-select: none;
+  background: #FFF;
+
+  &__content {
+    position: absolute;
+    left: 5px;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  &__text {
+    padding: 0;
+    font-size: 0.9em;
+  }
+
+  &__button {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+    font-family: inherit;
+    font-size: inherit;
+  }
+
+}

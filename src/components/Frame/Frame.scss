@@ -1,0 +1,24 @@
+@import "../../sass/base";
+.frame {
+  overflow: hidden;
+  position: relative;
+  border: 1px solid color(light);
+  margin: 0 auto;
+
+  &--circle {
+    border-radius: 50%;
+  }
+
+  &--square {
+  }
+
+  &--rounded-square {
+    border-radius: 4px;
+  }
+
+  img {
+    display: none;
+    user-select: none;
+    position: relative;
+  }
+}

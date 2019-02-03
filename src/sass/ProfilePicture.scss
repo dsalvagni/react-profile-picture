@@ -1,0 +1,74 @@
+@import "base";
+
+.profile-picture {
+  position: relative;
+  font-family: sans-serif;
+  font-size: 85%;
+
+  &--EMPTY,
+  &--INVALID_FILE_TYPE,
+  &--INVALID_IMAGE_SIZE {
+    .frame {
+      cursor: pointer;
+    }
+  }
+
+  &--LOADED .frame,
+  &--LOADED .profile-picture__canvas-helper {
+    cursor: move;
+  }
+
+  &__input {
+    display: none;
+  }
+
+  .photo {
+    text-align: center;
+    margin-bottom: 15px auto;
+    &__helper {
+      position: relative;
+      background-repeat: no-repeat;
+      background-color: transparent;
+      padding: 10% 0;
+      user-select: none;
+    }
+
+    &__options {
+      height: 40px;
+    }
+  }
+
+  .options {
+    &__zoom {
+      width: 85%;
+      vertical-align: middle;
+      display: inline-block;
+    }
+
+    &__remove {
+      text-align: center;
+      width: 15%;
+      vertical-align: middle;
+      display: inline-block;
+    }
+  }
+
+  .remove__button {
+    background: transparent;
+    border: 0;
+    cursor: pointer;
+  }
+
+  &__canvas,
+  &__canvas-helper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  }
+  &__canvas-helper {
+    width: 100%;
+    height: 100%;
+  }
+}
