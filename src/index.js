@@ -347,6 +347,8 @@ class ProfilePicture extends Component {
   renderMessages() {
     switch (this.state.status) {
       case Status.EMPTY:
+      case Status.INVALID_FILE_TYPE:
+      case Status.INVALID_IMAGE_SIZE:
         return (
           <Message onClick={this.handleTapToSelect.bind(this)}>
             {StatusMessage[this.state.status]}
