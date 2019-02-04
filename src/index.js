@@ -214,6 +214,7 @@ class ProfilePicture extends Component {
       },
       onError: error => {
         this.props.onError.call(this);
+        this.onError(error);
         this.debug("[onLoadStart]", { error });
       },
       onLoadEnd: data => {
@@ -239,6 +240,7 @@ class ProfilePicture extends Component {
       },
       onError: error => {
         this.props.onError.call(this);
+        this.onError(error);
         this.debug("[onError]", { error });
       }
     });
@@ -302,7 +304,10 @@ class ProfilePicture extends Component {
     renderToCanvas({
       canvas: this.canvasRef.current,
       cropSize: this.props.cropSize,
-      onError: this.props.onError.bind(this),
+      onError: error => {
+        this.onError(error);
+        this.props.onError.call(this, error)
+      },
       ...this.state.imageData
     });
 
@@ -318,7 +323,10 @@ class ProfilePicture extends Component {
       updateHelper({
         canvas: this.helperRef.current,
         cropSize: this.props.cropSize,
-        onError: this.props.onError.bind(this),
+        onError: (error) => { 
+          this.onError(error);
+          this.props.onError.bind(this);
+        },
         frameTop,
         frameLeft,
         canvasWidth: photoHelperWidth,
@@ -350,6 +358,10 @@ class ProfilePicture extends Component {
       default:
         return <Message>{StatusMessage[this.state.status]}</Message>;
     }
+  }
+
+  onError(message) {
+    this.setStatus(message.error);
   }
 
   getImageAsDataUrl(quality = 1) {
