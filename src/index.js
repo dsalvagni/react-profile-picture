@@ -231,6 +231,8 @@ class ProfilePicture extends Component {
 
   processFile(file) {
     processFile(file, {
+      minImageSize: this.props.minImageSize,
+      maxImageSize: this.props.maxImageSize,
       onLoad: data => {
         this.onImageDataLoaded(file, data);
         this.debug("[onLoad]", { data });
@@ -460,9 +462,10 @@ ProfilePicture.propTypes = {
   cropSize: PropTypes.number.isRequired,
   minZoom: PropTypes.number.isRequired,
   maxZoom: PropTypes.number.isRequired,
-  imageMinWidth: PropTypes.number.isRequired,
-  imageMinHeight: PropTypes.number.isRequired,
+  minImageSize: PropTypes.number.isRequired,
+  maxImageSize: PropTypes.number.isRequired,
   useHelper: PropTypes.bool.isRequired,
+  debug: PropTypes.bool.isRequired,
   // Callbacks
   onImagePropertiesChange: PropTypes.func,
   onImageLoading: PropTypes.func,
@@ -479,9 +482,10 @@ ProfilePicture.defaultProps = {
   cropSize: 160,
   minZoom: 0.1,
   maxZoom: 2,
-  imageMinWidth: 320,
-  imageMinHeight: 320,
+  minImageSize: 320,
+  maxImageSize: 1000,
   useHelper: false,
+  debug: false,
   // Callbacks
   onImagePropertiesChange: () => {},
   onImageLoading: () => {},

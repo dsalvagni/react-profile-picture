@@ -17,10 +17,8 @@ const isDataUrl = s => {
  * @param {string} imageUrl File path or DataURL image
  * @author Daniel Salvagni <danielsalvagni@gmail.com>
  * @param {object} settings Settings as image size and also callbacks
- * @param {number} settings.minWidth Minimum acceptable image width
- * @param {number} settings.minHeight Minimum acceptable image height
- * @param {number} settings.maxHeight Maximum desirable image height
- * @param {number} settings.maxWidth Minimum desirable image width
+ * @param {number} settings.minImageSize Minimum acceptable image width
+ * @param {number} settings.maxImageSize Minimum desirable image width
  * @param {function} settings.onError Error callback
  * @param {function} settings.onLoad Load callback
  * 
@@ -28,10 +26,8 @@ const isDataUrl = s => {
 const processFile = (imageUrl, settings) => {
   const image = new Image();
   const config = {
-    minWidth: 320,
-    minHeight: 320,
-    maxHeight: 1000,
-    maxWidth: 1000,
+    minImageSize: 320,
+    maxImageSize: 1000,
     onError: () => {},
     onLoad: () => {},
     ...settings
@@ -46,19 +42,19 @@ const processFile = (imageUrl, settings) => {
       imageWidth = image.width,
       imageHeight = image.height;
 
-    if (imageWidth < config.minWidth || imageHeight < config.minHeight)
+    if (imageWidth < config.minImageSize || imageHeight < config.minImageSize)
       if (typeof config.onError === "function")
         return config.onError.call(this, { error: INVALID_IMAGE_SIZE });
 
-    let frameRatio = config.maxHeight / config.maxWidth;
+    let frameRatio = config.maxImageSize / config.maxImageSize;
     let imageRatio = config.imageHeight / config.imageWidth;
 
     if (frameRatio > imageRatio) {
-      newHeight = config.maxHeight;
+      newHeight = config.maxImageSize;
       ratio = newHeight / imageHeight;
       newWidth = parseFloat(imageWidth) * ratio;
     } else {
-      newWidth = config.maxWidth;
+      newWidth = config.maxImageSize;
       ratio = newWidth / imageWidth;
       newHeight = parseFloat(imageHeight) * ratio;
     }
