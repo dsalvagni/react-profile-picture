@@ -2,6 +2,8 @@
 
 [Demo](https://dsalvagni.github.io/react-profile-picture) | [jQuery Version](https://github.com/dsalvagni/profile-picture)
 
+![demo gif](demo.gif)
+
 
 ## Setup
 
