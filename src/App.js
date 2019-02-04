@@ -118,7 +118,7 @@ class App extends Component {
     return (
         <div className="App">
         <header className="Header">
-          <a href="https://github.com/dsalvagni/react-profile-picture">Go to @dsalvagni/react-profile-picture</a>
+          <a href="https://github.com/dsalvagni/react-profile-picture">Find it on Github @dsalvagni/react-profile-picture</a>
         </header>
         <div className="Demo">
           <div className="Page-Header">
