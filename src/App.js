@@ -121,6 +121,10 @@ class App extends Component {
           <a href="https://github.com/dsalvagni/react-profile-picture">Go to @dsalvagni/react-profile-picture</a>
         </header>
         <div className="Demo">
+          <div className="Page-Header">
+          <h1 className="Page-Title">Profile Picture</h1>
+          <p className="Page-Description">Simple way to update your avatar. <br/> <span>A React version of <a href="https://github.com/dsalvagni/profile-picture">profile-picture</a></span></p>
+          </div>
           <div className="Card">
             <ProfilePicture
               ref={this.profilePictureRef}
@@ -140,12 +144,17 @@ class App extends Component {
           {this.state.hasImage ? this.renderOptions() : null}
           </div>
           <div className="container">
+          <h1>About</h1>
+          <p>This is a React version of <a href="https://github.com/dsalvagni/profile-picture">Profile Picture (jQuery)</a> which was published +2 years ago.</p>
+          <p>I've decided to write a React version of it as a personal project. I've noticed that the jQuery version got some attention on <a href="https://codepen.io/dsalvagni/details/BLapab">codepen</a> (+16k views) and I thought that it would be great if I could move the old code to a modern library.</p>
+          <h1>Setup</h1>
+          <p>The better option would be to add this component into your project by cloning this repository and building it yourself with the design changes that you might want to make. </p>
+          <p><em>I'm not sure if this is going to be published on NPM.</em> <a href="https://github.com/dsalvagni/react-profile-picture/issues/new">Should I?</a></p>
+          <p>Anyway, you can always add it to your project also by installing using NPM + Github:</p>
 
-          <h1>react-profile-picture</h1>
-          <p>Simple way to crop your profile picture. <br/> A React version of <a href="https://github.com/dsalvagni/profile-picture">profile-picture</a></p>
 
-          <hr />
-
+            <SyntaxHighlighter language='javascript' style={atomDark}>{`npm i --save git+https://github.com/dsalvagni/react-profile-picture.git`}</SyntaxHighlighter>
+          
           <h1>Example</h1>
             <SyntaxHighlighter language='javascript' style={atomDark}>
 {`
