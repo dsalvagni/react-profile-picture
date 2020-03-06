@@ -6,6 +6,7 @@ const OVER = "OVER";
 class Dropzone extends Component {
   constructor(props) {
     super(props);
+    this.preventDefault = this.preventDefault.bind(this);
     this.dropzoneElement = React.createRef();
     this.state = {
       status: IDLE
@@ -37,7 +38,7 @@ class Dropzone extends Component {
     ].forEach(eName => {
       dropzoneArea.addEventListener(
         eName,
-        this.preventDefault.bind(this),
+        this.preventDefault,
         false
       );
     });
@@ -54,7 +55,7 @@ class Dropzone extends Component {
       "dragleave",
       "drop"
     ].forEach(eName => {
-      dropzoneArea.removeEventListener(eName);
+      dropzoneArea.removeEventListener(eName, this.preventDefault);
     });
   }
 

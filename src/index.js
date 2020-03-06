@@ -37,6 +37,9 @@ class ProfilePicture extends Component {
     this.photoHelperRef = React.createRef();
     this.inputFileRef = React.createRef();
 
+    this.onMoving = this.onMoving.bind(this);
+    this.onMovingEnd = this.onMovingEnd.bind(this);
+
     this.state = {
       status: Status.EMPTY,
       loadedData: {},
@@ -55,8 +58,11 @@ class ProfilePicture extends Component {
   }
 
   componentWillUnmount() {
-    ["mouseup", "touchend", "mousemove", "touchstart"].forEach(eName =>
-      window.removeEventListener(eName)
+    ["mousemove", "touchmove"].forEach(eName =>
+      window.removeEventListener(eName, this.onMoving)
+    );
+    ["mouseup", "touchend"].forEach(eName =>
+      window.removeEventListener(eName, this.onMovingEnd)
     );
     this.debug("[componentWillUnmount]");
   }
@@ -111,56 +117,60 @@ class ProfilePicture extends Component {
     this.debug("[dragStart]", { draggingPosition: this.draggingPosition });
   }
 
+  onMovingEnd() {
+    this.dragging = false;
+    this.debug("[mouseup, touchend]");
+  }
+
+  onMoving(e) {
+    if (this.dragging) {
+      e.preventDefault();
+      const state = { ...this.state };
+      const imageData = { ...state.imageData };
+      let refresh = false;
+      this.draggingPosition.clientX = e.clientX;
+      this.draggingPosition.clientY = e.clientY;
+      if (e.touches) {
+        this.draggingPosition.clientX = e.touches[0].clientX;
+        this.draggingPosition.clientY = e.touches[0].clientY;
+      }
+
+      var dy = this.draggingPosition.clientY - this.draggingPosition.y;
+      var dx = this.draggingPosition.clientX - this.draggingPosition.x;
+      dx = Math.min(dx, 0);
+      dy = Math.min(dy, 0);
+      /**
+       * Limit the area to drag horizontally
+       */
+      if (imageData.imageWidth + dx >= this.props.cropSize) {
+        imageData.imageX = dx;
+        refresh = true;
+      }
+      if (imageData.imageHeight + dy >= this.props.cropSize) {
+        imageData.imageY = dy;
+        refresh = true;
+      }
+      if (refresh) {
+        state.imageData = imageData;
+        this.setState(state, this.renderImage.bind(this));
+        this.debug("[mousemove, touchstart]", { ...imageData, refresh });
+      }
+    }
+  }
+
   registerImageEvents() {
     ["mouseup", "touchend"].forEach(eName => {
       window.addEventListener(
         eName,
-        e => {
-          this.dragging = false;
-          this.debug("[mouseup, touchend]");
-        },
+        this.onMovingEnd,
         false
       );
     });
 
-    ["mousemove", "touchstart"].forEach(eName => {
+    ["mousemove", "touchmove"].forEach(eName => {
       window.addEventListener(
         eName,
-        e => {
-          if (this.dragging) {
-            e.preventDefault();
-            const state = { ...this.state };
-            const imageData = { ...state.imageData };
-            let refresh = false;
-            this.draggingPosition.clientX = e.clientX;
-            this.draggingPosition.clientY = e.clientY;
-            if (e.touches) {
-              this.draggingPosition.clientX = e.touches[0].clientX;
-              this.draggingPosition.clientY = e.touches[0].clientY;
-            }
-
-            var dy = this.draggingPosition.clientY - this.draggingPosition.y;
-            var dx = this.draggingPosition.clientX - this.draggingPosition.x;
-            dx = Math.min(dx, 0);
-            dy = Math.min(dy, 0);
-            /**
-             * Limit the area to drag horizontally
-             */
-            if (imageData.imageWidth + dx >= this.props.cropSize) {
-              imageData.imageX = dx;
-              refresh = true;
-            }
-            if (imageData.imageHeight + dy >= this.props.cropSize) {
-              imageData.imageY = dy;
-              refresh = true;
-            }
-            if (refresh) {
-              state.imageData = imageData;
-              this.setState(state, this.renderImage.bind(this));
-              this.debug("[mousemove, touchstart]", { ...imageData, refresh });
-            }
-          }
-        },
+        this.onMoving,
         false
       );
     });
@@ -220,10 +230,10 @@ class ProfilePicture extends Component {
       onLoadEnd: data => {
         const { base64Image } = data;
 
-        const state = {...this.state}
+        const state = { ...this.state };
         state.file = file;
         this.setState(state);
-        
+
         this.processFile(base64Image);
         this.debug("[onLoadEnd]", { data });
       }
@@ -288,7 +298,7 @@ class ProfilePicture extends Component {
       zoom,
       originalWidth: loadedData.originalImageWidth,
       originalHeight: loadedData.originalImageHeight,
-      cropSize: this.props.cropSize,
+      cropSize: this.props.cropSize
     });
 
     state.imageData = {
@@ -306,7 +316,7 @@ class ProfilePicture extends Component {
       cropSize: this.props.cropSize,
       onError: error => {
         this.onError(error);
-        this.props.onError.call(this, error)
+        this.props.onError.call(this, error);
       },
       ...this.state.imageData
     });
@@ -323,7 +333,7 @@ class ProfilePicture extends Component {
       updateHelper({
         canvas: this.helperRef.current,
         cropSize: this.props.cropSize,
-        onError: (error) => { 
+        onError: error => {
           this.onError(error);
           this.props.onError.bind(this);
         },

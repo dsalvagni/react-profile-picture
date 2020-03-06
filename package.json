@@ -1,6 +1,6 @@
 {
   "name": "profile-picture",
-  "version": "0.0.6",
+  "version": "0.0.7",
   "description": "Simple way to change your profile picture",
   "main": "build/index.js",
   "dependencies": {
@@ -30,8 +30,8 @@
     "webpack-cli": "^3.2.1"
   },
   "scripts": {
-    "start": "webpack --watch --mode=development",
-    "build": "webpack --mode=production",
+    "start": "node ./node_modules/webpack/bin/webpack --watch --mode=development",
+    "build": "node ./node_modules/webpack/bin/webpack --mode=production",
     "test": "jest"
   },
   "keywords": [
