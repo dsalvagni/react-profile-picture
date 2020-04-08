@@ -44,7 +44,7 @@ class Dropzone extends Component {
     });
   }
 
-  componentWillUnount() {
+  componentWillUnmount() {
     const dropzoneArea = this.dropzoneElement.current;
     [
       "drag",
@@ -100,61 +100,3 @@ Dropzone.defaultProps = {
 };
 
 export default Dropzone;
-
-// function registerDropZoneEvents() {
-//             var target = null;
-//             /**
-//              * Stop event propagation to all dropzone related events.
-//              */
-//             self.element.on('drag dragstart dragend dragover dragenter dragleave drop', function (e) {
-//                 e.preventDefault();
-//                 e.stopPropagation();
-//                 e.originalEvent.dataTransfer.dropEffect = 'copy';
-//             });
-
-//             /**
-//              * Register the events when the file is out or dropped on the dropzone
-//              */
-//             self.element.on('dragend dragleave drop', function (e) {
-//                 if (target === e.target) {
-//                     self.element.removeClass('is-dragover');
-//                 }
-//             });
-//             /**
-//              * Register the events when the file is over the dropzone
-//              */
-//             self.element.on('dragover dragenter', function (e) {
-//                 target = e.target;
-//                 self.element.addClass('is-dragover');
-//             });
-//             /**
-//              * On a file is selected, calls the readFile method.
-//              * It is allowed to select just one file - we're forcing it here.
-//              */
-//             self.element.on('change', 'input[type=file]', function (e) {
-//                 if (this.files && this.files.length) {
-//                     readFile(this.files[0]);
-//                     this.value = '';
-//                 }
-//             });
-//             /**
-//              * Handle the click to the hidden input file so we can browser files.
-//              */
-//             self.element.on('click', '.photo--empty .photo__frame', function (e) {
-//                 $(cssSelector + ' input[type=file]').trigger('click');
-
-//             });
-//             /**
-//              * Register the remove action to the remove button.
-//              */
-//             self.element.on('click', '.remove', function (e) {
-//                 removeImage();
-//             });
-//             /**
-//              * Register the drop element to the container component
-//              */
-//             self.element.on('drop', function (e) {
-//                 readFile(e.originalEvent.dataTransfer.files[0]);
-//             });
-
-//         }
