@@ -55,7 +55,7 @@ class Dropzone extends Component {
       "dragleave",
       "drop"
     ].forEach(eName => {
-      dropzoneArea.removeEventListener(eName, this.preventDefault);
+      dropzoneArea.removeEventListener(eName, this.preventDefault, false);
     });
   }
 
