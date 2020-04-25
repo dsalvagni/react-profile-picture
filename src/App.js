@@ -1,10 +1,10 @@
-import React, { Component, Fragment } from 'react';
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { atomDark } from 'react-syntax-highlighter/dist/styles/prism';
-import './App.css';
+import React, { Component, Fragment } from "react";
+import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
+import { atomDark } from "react-syntax-highlighter/dist/styles/prism";
+import "./App.css";
 
-import ProfilePicture from "profile-picture"
-import "profile-picture/build/ProfilePicture.css"
+import ProfilePicture from "profile-picture";
+import "profile-picture/build/ProfilePicture.css";
 
 import example from "./example.jpg";
 
@@ -41,15 +41,14 @@ class App extends Component {
     });
   }
 
-
   renderOptions() {
     return (
       <Fragment>
         <div className="Actions">
           {this.state.image ? (
             <Fragment>
-            <img src={this.state.image} alt="profile" />
-            <hr />
+              <img src={this.state.image} alt="profile" />
+              <hr />
             </Fragment>
           ) : null}
           <button className="Button" onClick={this.handleClick.bind(this)}>
@@ -115,23 +114,55 @@ class App extends Component {
   }
 
   billboardAd() {
-    return {__html: '<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("403824754", "970x250", "403824754");});}catch (error) {console.log("Ad",error);}</script>'};
+    return {
+      __html: `<script id="mNCC" language="javascript">
+    medianet_width = "970";
+    medianet_height = "250";
+    medianet_crid = "403824754";
+    medianet_versionId = "3111299";
+    </script>
+    <script src="https://contextual.media.net/nmedianet.js?cid=8CUTBI69Q"></script>`
+    };
   }
 
   leaderboardAd() {
-    return { __html: '<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("915984225", "970x90", "915984225");});}catch (error) {console.log("Ad",error);}</script>'};
+    return {
+      __html: `<script id="mNCC" language="javascript">
+      medianet_width = "970";
+      medianet_height = "90";
+      medianet_crid = "915984225";
+      medianet_versionId = "3111299";
+      </script>
+      <script src="https://contextual.media.net/nmedianet.js?cid=8CUTBI69Q"></script>`
+    };
   }
 
   render() {
     return (
-        <div className="App">
+      <div className="App">
         <header className="Header">
-          <a rel="external nofollow" href="https://github.com/dsalvagni/react-profile-picture">Find it on Github @dsalvagni/react-profile-picture</a>
+          <a
+            rel="external nofollow"
+            href="https://github.com/dsalvagni/react-profile-picture"
+          >
+            Find it on Github @dsalvagni/react-profile-picture
+          </a>
         </header>
         <div className="Demo">
           <div className="Page-Header">
-          <h1 className="Page-Title">Profile Picture</h1>
-          <p className="Page-Description">Simple way to update your avatar. <br/> <span>A React version of <a rel="external nofollow" href="https://github.com/dsalvagni/profile-picture">profile-picture</a></span></p>
+            <h1 className="Page-Title">Profile Picture</h1>
+            <p className="Page-Description">
+              Simple way to update your avatar. <br />{" "}
+              <span>
+                A React version of{" "}
+                <a
+                  rel="external nofollow"
+                  href="https://github.com/dsalvagni/profile-picture"
+                >
+                  profile-picture
+                </a>
+              </span>
+            </p>
           </div>
           <div className="Example">
             <div className="Card">
@@ -146,29 +177,79 @@ class App extends Component {
                 cropSize={220}
               />
               <hr />
-              <small>Picture from <a href="https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event" target="_blank" rel="noopener noreferrer">
-              https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event</a></small> <br />
-              <small>Icons generated from <a href="https://icomoon.io/app" target="_blank" rel="noopener noreferrer">https://icomoon.io/app</a></small>
+              <small>
+                Picture from{" "}
+                <a
+                  href="https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://www.oscars.org/news/academy-celebrates-10-years-napoleon-dynamite-live-commentary-event
+                </a>
+              </small>{" "}
+              <br />
+              <small>
+                Icons generated from{" "}
+                <a
+                  href="https://icomoon.io/app"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  https://icomoon.io/app
+                </a>
+              </small>
             </div>
             {this.state.hasImage ? this.renderOptions() : null}
           </div>
-          </div>
-          <div className="container">
-            <div dangerouslySetInnerHTML={this.billboardAd()}></div>
+        </div>
+        <div className="container">
+          <div dangerouslySetInnerHTML={this.billboardAd()}></div>
           <h1>About</h1>
-          <p>This is a React version of <a rel="external nofollow" href="https://github.com/dsalvagni/profile-picture">Profile Picture (jQuery)</a> which was published +3 years ago.</p>
-          <p>I've decided to write a React version of it as a personal project. I've noticed that the jQuery version got some attention on <a href="https://codepen.io/dsalvagni/details/BLapab">codepen</a> (+30k views) and I thought that it would be great if I could move the old code to a modern library.</p>
+          <p>
+            This is a React version of{" "}
+            <a
+              rel="external nofollow"
+              href="https://github.com/dsalvagni/profile-picture"
+            >
+              Profile Picture (jQuery)
+            </a>{" "}
+            which was published +3 years ago.
+          </p>
+          <p>
+            I've decided to write a React version of it as a personal project.
+            I've noticed that the jQuery version got some attention on{" "}
+            <a href="https://codepen.io/dsalvagni/details/BLapab">codepen</a>{" "}
+            (+30k views) and I thought that it would be great if I could move
+            the old code to a modern library.
+          </p>
           <h2>Setup</h2>
-          <p>The better option would be to add this component into your project by cloning this repository and building it yourself with the design changes that you might want to make. </p>
-          <p><em>I'm not sure if this is going to be published on NPM.</em> <a rel="external nofollow" href="https://github.com/dsalvagni/react-profile-picture/issues/new">Should I?</a></p>
-          <p>Anyway, you can always add it to your project also by installing using NPM + Github:</p>
+          <p>
+            The better option would be to add this component into your project
+            by cloning this repository and building it yourself with the design
+            changes that you might want to make.{" "}
+          </p>
+          <p>
+            <em>I'm not sure if this is going to be published on NPM.</em>{" "}
+            <a
+              rel="external nofollow"
+              href="https://github.com/dsalvagni/react-profile-picture/issues/new"
+            >
+              Should I?
+            </a>
+          </p>
+          <p>
+            Anyway, you can always add it to your project also by installing
+            using NPM + Github:
+          </p>
 
+          <SyntaxHighlighter
+            language="javascript"
+            style={atomDark}
+          >{`npm i --save git+https://github.com/dsalvagni/react-profile-picture.git`}</SyntaxHighlighter>
 
-            <SyntaxHighlighter language='javascript' style={atomDark}>{`npm i --save git+https://github.com/dsalvagni/react-profile-picture.git`}</SyntaxHighlighter>
-          
           <h2>Example</h2>
-            <SyntaxHighlighter language='javascript' style={atomDark}>
-{`
+          <SyntaxHighlighter language="javascript" style={atomDark}>
+            {`
 import React, { Component } from 'react';
 
 import ProfilePicture from "profile-picture"
@@ -202,15 +283,30 @@ class App extends Component {
   }
 }
 `}
-            </SyntaxHighlighter>
-            <div dangerouslySetInnerHTML={this.billboardAd()}></div>
-            <h2>Options</h2>
-            <p><a rel="external nofollow" href="https://github.com/dsalvagni/react-profile-picture">Find the options and other info here.</a></p>
-          </div>
-          <footer>
-            Made with <span role="img" aria-labelledby="red heart">❤️</span> and <span role="img" aria-labelledby="snowflake">❄️</span> by <a href="https://twitter.com/danielsalvagni">@danielsalvagni</a>.
-          </footer>
+          </SyntaxHighlighter>
+          <div dangerouslySetInnerHTML={this.billboardAd()}></div>
+          <h2>Options</h2>
+          <p>
+            <a
+              rel="external nofollow"
+              href="https://github.com/dsalvagni/react-profile-picture"
+            >
+              Find the options and other info here.
+            </a>
+          </p>
         </div>
+        <footer>
+          Made with{" "}
+          <span role="img" aria-labelledby="red heart">
+            ❤️
+          </span>{" "}
+          and{" "}
+          <span role="img" aria-labelledby="snowflake">
+            ❄️
+          </span>{" "}
+          by <a href="https://twitter.com/danielsalvagni">@danielsalvagni</a>.
+        </footer>
+      </div>
     );
   }
 }
