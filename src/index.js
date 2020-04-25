@@ -226,14 +226,14 @@ class ProfilePicture extends Component {
         state.file = file;
         this.setState(state);
 
-        this.processFile(base64Image);
+        this.processFile(base64Image, file);
         this.debug("[onLoadEnd]", { data });
       }
     });
   }
 
-  processFile(file) {
-    processFile(file, {
+  processFile(base64Imagem, file) {
+    processFile(base64Image, {
       minImageSize: this.props.minImageSize,
       maxImageSize: this.props.maxImageSize,
       onLoad: data => {
