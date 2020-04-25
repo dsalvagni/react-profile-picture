@@ -115,25 +115,31 @@ class App extends Component {
 
   billboardAd() {
     return {
-      __html: `<script id="mNCC" language="javascript">
-    medianet_width = "970";
-    medianet_height = "250";
-    medianet_crid = "403824754";
-    medianet_versionId = "3111299";
-    </script>
-    <script src="https://contextual.media.net/nmedianet.js?cid=8CUTBI69Q"></script>`
+      __html: `<div id="403824754">
+      <script type="text/javascript">
+          try {
+              window._mNHandle.queue.push(function (){
+                  window._mNDetails.loadTag("403824754", "970x250", "403824754");
+              });
+          }
+          catch (error) {}
+      </script>
+  </div>`
     };
   }
 
   leaderboardAd() {
     return {
-      __html: `<script id="mNCC" language="javascript">
-      medianet_width = "970";
-      medianet_height = "90";
-      medianet_crid = "915984225";
-      medianet_versionId = "3111299";
-      </script>
-      <script src="https://contextual.media.net/nmedianet.js?cid=8CUTBI69Q"></script>`
+      __html: `<div id="915984225">
+       <script type="text/javascript">
+           try {
+               window._mNHandle.queue.push(function (){
+                   window._mNDetails.loadTag("915984225", "970x90", "915984225");
+               });
+           }
+           catch (error) {}
+       </script>
+   </div>`
     };
   }
 

@@ -8,6 +8,7 @@
     "profile-picture": "git+https://github.com/dsalvagni/react-profile-picture.git",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
+    "react-script-tag": "^1.1.2",
     "react-scripts": "^3.4.1",
     "react-syntax-highlighter": "^10.1.2"
   },
