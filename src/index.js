@@ -160,19 +160,11 @@ class ProfilePicture extends Component {
 
   registerImageEvents() {
     ["mouseup", "touchend"].forEach(eName => {
-      window.addEventListener(
-        eName,
-        this.onMovingEnd,
-        false
-      );
+      window.addEventListener(eName, this.onMovingEnd, false);
     });
 
     ["mousemove", "touchmove"].forEach(eName => {
-      window.addEventListener(
-        eName,
-        this.onMoving,
-        false
-      );
+      window.addEventListener(eName, this.onMoving, false);
     });
   }
 
@@ -284,7 +276,7 @@ class ProfilePicture extends Component {
       imageY: positions.imageY,
       imageSrc: loadedData.imageSrc,
       file
-    }
+    };
 
     state.imageData = imageData;
     state.status = Status.LOADED;
@@ -386,7 +378,7 @@ class ProfilePicture extends Component {
   }
 
   getData() {
-    return { ...this.state.imageData };
+    return { ...this.state.imageData, file: this.state.file };
   }
 
   setImage(image) {
