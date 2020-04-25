@@ -1,6 +1,6 @@
 # Profile Picture (React Component)
 
-[Demo](https://dsalvagni.github.io/react-profile-picture) | [jQuery Version](https://github.com/dsalvagni/profile-picture)
+[Demo](https://salvagni.dev/react-profile-picture) | [jQuery Version](https://github.com/dsalvagni/profile-picture)
 
 ![demo gif](demo.gif)
 
