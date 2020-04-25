@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 
 import Message from "./components/Message/Message";
 import Frame from "./components/Frame/Frame";
-import ZoomScale from "./components/ZoomScale/ZoomScale";
+import ZoomScale from "./components/ZoomScale/ZoomScale"; 
 import Dropzone from "./components/Dropzone/Dropzone";
 import Status from "./constants/Status";
 import StatusMessage from "./constants/StatusMessage";
@@ -270,13 +270,10 @@ class ProfilePicture extends Component {
       imageY: imageData.imageY
     });
 
-    imageData = {
-      ...imageData,
-      imageX: positions.imageX,
-      imageY: positions.imageY,
-      imageSrc: loadedData.imageSrc,
-      file
-    };
+    imageData.imageX = positions.imageX;
+    imageData.imageY = positions.imageY;
+    imageData.imageSrc = loadedData.imageSrc;
+    imageData.file = file;
 
     state.imageData = imageData;
     state.status = Status.LOADED;
@@ -378,7 +375,7 @@ class ProfilePicture extends Component {
   }
 
   getData() {
-    return { ...this.state.imageData, file: this.state.file };
+    return { ...this.state.imageData };
   }
 
   setImage(image) {
