@@ -59,10 +59,10 @@ class ProfilePicture extends Component {
 
   componentWillUnmount() {
     ["mousemove", "touchmove"].forEach(eName =>
-      window.removeEventListener(eName, this.onMoving)
+      window.removeEventListener(eName, this.onMoving, false)
     );
     ["mouseup", "touchend"].forEach(eName =>
-      window.removeEventListener(eName, this.onMovingEnd)
+      window.removeEventListener(eName, this.onMovingEnd, false)
     );
     this.debug("[componentWillUnmount]");
   }
