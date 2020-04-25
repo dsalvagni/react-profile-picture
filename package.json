@@ -2,7 +2,7 @@
   "name": "example",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://dsalvagni.github.io/react-profile-picture",
+  "homepage": "https://salvagni.dev/react-profile-picture",
   "dependencies": {
     "gh-pages": "^2.0.1",
     "profile-picture": "git+https://github.com/dsalvagni/react-profile-picture.git",
