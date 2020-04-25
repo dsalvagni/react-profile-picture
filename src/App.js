@@ -114,33 +114,37 @@ class App extends Component {
   }
 
   billboardAd() {
-    return {
-      __html: `<div id="403824754">
-      <script type="text/javascript">
-          try {
-              window._mNHandle.queue.push(function (){
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.text = `
+              try {
+                window._mNHandle.queue.push(function (){
                   window._mNDetails.loadTag("403824754", "970x250", "403824754");
-              });
-          }
-          catch (error) {}
-      </script>
-  </div>`
-    };
+                });
+            }
+            catch (error) {
+              console.log('leaderboard', error);
+            }
+            `;
+    document.body.appendChild(script);
+    return <div id="403824754"></div>;
   }
 
   leaderboardAd() {
-    return {
-      __html: `<div id="915984225">
-       <script type="text/javascript">
-           try {
-               window._mNHandle.queue.push(function (){
-                   window._mNDetails.loadTag("915984225", "970x90", "915984225");
-               });
-           }
-           catch (error) {}
-       </script>
-   </div>`
-    };
+    const script = document.createElement("script");
+    script.type = "text/javascript";
+    script.text = `
+              try {
+                window._mNHandle.queue.push(function (){
+                    window._mNDetails.loadTag("915984225", "970x90", "915984225");
+                });
+            }
+            catch (error) {
+              console.log('leaderboard', error);
+            }
+            `;
+    document.body.appendChild(script);
+    return <div id="915984225"></div>;
   }
 
   render() {
@@ -209,7 +213,7 @@ class App extends Component {
           </div>
         </div>
         <div className="container">
-          <div dangerouslySetInnerHTML={this.billboardAd()}></div>
+          {this.billboardAd()}
           <h1>About</h1>
           <p>
             This is a React version of{" "}
@@ -290,7 +294,7 @@ class App extends Component {
 }
 `}
           </SyntaxHighlighter>
-          <div dangerouslySetInnerHTML={this.billboardAd()}></div>
+          {this.leaderboardAd()}
           <h2>Options</h2>
           <p>
             <a
