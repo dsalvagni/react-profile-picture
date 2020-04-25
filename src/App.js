@@ -115,11 +115,11 @@ class App extends Component {
   }
 
   billboardAd() {
-    return {__html: '<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("403824754", "970x250", "403824754");});}catch (error) {}</script>'};
+    return {__html: '<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("403824754", "970x250", "403824754");});}catch (error) {console.log("Ad",error);}</script>'};
   }
 
   leaderboardAd() {
-    return { __html: '<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("915984225", "970x90", "915984225");});}catch (error) {}</script>'};
+    return { __html: '<script type="text/javascript">try {window._mNHandle.queue.push(function (){window._mNDetails.loadTag("915984225", "970x90", "915984225");});}catch (error) {console.log("Ad",error);}</script>'};
   }
 
   render() {
