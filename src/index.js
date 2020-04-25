@@ -256,7 +256,7 @@ class ProfilePicture extends Component {
     });
   }
 
-  onImageDataLoaded(base64Image, loadedData) {
+  onImageDataLoaded(file, loadedData) {
     const state = { ...this.state };
     state.loadedData = loadedData;
 
@@ -278,9 +278,14 @@ class ProfilePicture extends Component {
       imageY: imageData.imageY
     });
 
-    imageData.imageX = positions.imageX;
-    imageData.imageY = positions.imageY;
-    imageData.imageSrc = loadedData.imageSrc;
+    imageData = {
+      ...imageData,
+      imageX: positions.imageX,
+      imageY: positions.imageY,
+      imageSrc: loadedData.imageSrc,
+      file
+    }
+
     state.imageData = imageData;
     state.status = Status.LOADED;
     this.setState(state, this.renderImage.bind(this));
