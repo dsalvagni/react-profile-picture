@@ -18,28 +18,52 @@
   background: linear-gradient(to top, #3F5EFB, #FC466B);
   padding: 20px 0px 80px 0;
 }
+
+.Example {
+  display: flex;
+  max-width: 800px;
+  margin: 0 auto;
+  box-shadow: 2px 10px 74px -9px rgba(0,0,0,0.75);
+}
+
+
 .Card {
   background: #FFF;
-  margin: 0 auto;
   max-width: 400px;
   min-width: 200px;
   width: 100%;  
   padding: 20px;
-  border-radius: 4px;
-  box-shadow: 2px 10px 74px -9px rgba(0,0,0,0.75);
+  border-radius: 4px 0 0 4px;
 }
 
 .Actions {
   color: #FFF;
   background: #333;
-  margin: 0 auto;
   max-width: 400px;
   min-width: 200px;
   width: 100%;  
   padding: 20px;
+  border-radius: 0 4px 4px 0;
 }
 
 .Actions img{ margin: 20px auto; display: block; border: 30px solid #FFF;}
+
+
+@media screen and (max-width: 799px) {
+
+  .Example {
+    flex-direction: column;
+    width: 320px;
+  }
+
+  .Card, .Actions {
+    padding: 0;
+    width: 310px;
+    padding: 10px 5px;
+  }
+
+  .Actions img{ margin: 5px auto; display: block; border: 5px solid #FFF;}
+}
 
 .App ul, .App li {
   padding: 0;
@@ -55,6 +79,7 @@ small {
 .container {
   max-width: 800px;
   margin: 50px auto;
+  padding: 0 5px;
 }
 
 .Button {
