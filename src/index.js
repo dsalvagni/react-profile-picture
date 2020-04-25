@@ -232,7 +232,7 @@ class ProfilePicture extends Component {
     });
   }
 
-  processFile(base64Imagem, file) {
+  processFile(base64Image, file) {
     processFile(base64Image, {
       minImageSize: this.props.minImageSize,
       maxImageSize: this.props.maxImageSize,
