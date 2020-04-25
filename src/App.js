@@ -116,6 +116,7 @@ class App extends Component {
   billboardAd() {
     const script = document.createElement("script");
     script.type = "text/javascript";
+    script.id = "billboard-ad";
     script.text = `
               try {
                 window._mNHandle.queue.push(function (){
@@ -126,13 +127,15 @@ class App extends Component {
               console.log('leaderboard', error);
             }
             `;
-    document.body.appendChild(script);
+    const adScript = document.getElementById("billboard-ad");
+    if (!adScript) document.body.appendChild(script);
     return <div id="403824754"></div>;
   }
 
   leaderboardAd() {
     const script = document.createElement("script");
     script.type = "text/javascript";
+    script.id = "leaderboard-ad";
     script.text = `
               try {
                 window._mNHandle.queue.push(function (){
@@ -143,7 +146,8 @@ class App extends Component {
               console.log('leaderboard', error);
             }
             `;
-    document.body.appendChild(script);
+    const adScript = document.getElementById("leaderboard-ad");
+    if (!adScript) document.body.appendChild(script);
     return <div id="915984225"></div>;
   }
 
