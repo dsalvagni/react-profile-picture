@@ -21,7 +21,7 @@ const isDataUrl = s => {
  * @param {number} settings.maxImageSize Minimum desirable image width
  * @param {function} settings.onError Error callback
  * @param {function} settings.onLoad Load callback
- * 
+ *
  */
 const processFile = (imageUrl, settings) => {
   const image = new Image();
@@ -79,4 +79,14 @@ const processFile = (imageUrl, settings) => {
   image.src = imageUrl;
 };
 
-export { processFile, INVALID_IMAGE_SIZE, isDataUrl };
+const base64MimeType = encoded => {
+  const mime = encoded.match(/data:([a-zA-Z0-9]+\/[a-zA-Z0-9-.+]+).*,.*/);
+
+  if (mime && mime.length) {
+    return mime[1];
+  }
+
+  return null;
+};
+
+export { processFile, INVALID_IMAGE_SIZE, isDataUrl, base64MimeType };

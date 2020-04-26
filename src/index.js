@@ -3,14 +3,14 @@ import PropTypes from "prop-types";
 
 import Message from "./components/Message/Message";
 import Frame from "./components/Frame/Frame";
-import ZoomScale from "./components/ZoomScale/ZoomScale"; 
+import ZoomScale from "./components/ZoomScale/ZoomScale";
 import Dropzone from "./components/Dropzone/Dropzone";
 import Status from "./constants/Status";
 import StatusMessage from "./constants/StatusMessage";
 import Icon from "./components/Icon/Icon";
 
 import { fileReader } from "./lib/FileReader";
-import { processFile } from "./lib/ProcessFile";
+import { processFile, base64MimeType } from "./lib/ProcessFile";
 import { fitToFrame, centerImage, scaleImage } from "./lib/FitToFrame";
 import {
   renderToCanvas,
@@ -237,6 +237,11 @@ class ProfilePicture extends Component {
       minImageSize: this.props.minImageSize,
       maxImageSize: this.props.maxImageSize,
       onLoad: data => {
+        if (!file) {
+          file = new Blob([data], {
+            type: base64MimeType(data)
+          });
+        }
         this.onImageDataLoaded(file, data);
         this.debug("[onLoad]", { data });
       },
