@@ -170,3 +170,8 @@ background: linear-gradient(to right, #f44336, #2196f3); /* W3C, IE 10+/ Edge, F
 
   
 }
+
+input[type=text] {
+  width: 100%;
+  padding: 4px;
+}

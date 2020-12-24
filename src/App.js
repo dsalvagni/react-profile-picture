@@ -17,7 +17,14 @@ class App extends Component {
       image: null,
       debug: true,
       frame: "rounded-square",
-      hasImage: false
+      constraints: "",
+      hasImage: false,
+      messages: {
+        DEFAULT: "Drop your photo here or tap to select.",
+        INVALID_IMAGE_SIZE: "Your photo must be larger than 350px.",
+        DRAGOVER: "Drop your photo",
+        INVALID_FILE_TYPE: "Only images allowed."
+      }
     };
   }
 
@@ -28,6 +35,19 @@ class App extends Component {
 
     this.setState({
       [name]: value
+    });
+  }
+
+  handleMessageChange(event) {
+    const target = event.target;
+    const value = target.value;
+    const name = target.name;
+
+    this.setState({
+      messages: {
+        ...this.state.messages,
+        [name]: value
+      }
     });
   }
 
@@ -66,6 +86,7 @@ class App extends Component {
                 Debug (console)
               </label>
             </li>
+            <hr />
             <li>
               <strong>Frame</strong>
               <ul>
@@ -105,6 +126,89 @@ class App extends Component {
                     Circle
                   </label>
                 </li>
+              </ul>
+            </li>
+            <li>
+              <strong>Constraints</strong>
+              <ul>
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      name="constraints"
+                      value=""
+                      checked={this.state.constraints === ""}
+                      onChange={this.handleInputChange.bind(this)}
+                    />
+                    None
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      name="constraints"
+                      value="horizontal"
+                      checked={this.state.constraints === "horizontal"}
+                      onChange={this.handleInputChange.bind(this)}
+                    />
+                    Only Horizontal
+                  </label>
+                </li>
+                <li>
+                  <label>
+                    <input
+                      type="radio"
+                      name="constraints"
+                      value="vertical"
+                      checked={this.state.constraints === "vertical"}
+                      onChange={this.handleInputChange.bind(this)}
+                    />
+                    Only Vertical
+                  </label>
+                </li>
+              </ul>
+            </li>
+            <hr />
+            <li>
+              <strong>Messages</strong>
+              <ul>
+              <li>
+              <input
+                type="text"
+                name="DEFAULT"
+                placeholder="Drop your photo here or tap to select."
+                value={this.state.messages.DEFAULT}
+                onChange={this.handleMessageChange.bind(this)}
+              />
+              </li>
+              <li>
+              <input
+                type="text"
+                name="INVALID_FILE_TYPE"
+                placeholder="Only images allowed."
+                value={this.state.messages.INVALID_FILE_TYPE}
+                onChange={this.handleMessageChange.bind(this)}
+              />
+              </li>
+              <li>
+              <input
+                type="text"
+                name="INVALID_IMAGE_SIZE"
+                placeholder="Your photo must be larger than 350px."
+                value={this.state.messages.INVALID_IMAGE_SIZE}
+                onChange={this.handleMessageChange.bind(this)}
+              />
+              </li>
+              <li>
+              <input
+                type="text"
+                name="DRAGOVER"
+                placeholder="Drop your photo"
+                value={this.state.messages.DRAGOVER}
+                onChange={this.handleMessageChange.bind(this)}
+              />
+              </li>
               </ul>
             </li>
           </ul>
@@ -188,6 +292,8 @@ class App extends Component {
                 useHelper={true}
                 onImageLoaded={this.setHasImage.bind(this, true)}
                 onImageRemoved={this.setHasImage.bind(this, false)}
+                messages={this.state.messages}
+                constraints={this.state.constraints}
                 cropSize={220}
               />
               <hr />
