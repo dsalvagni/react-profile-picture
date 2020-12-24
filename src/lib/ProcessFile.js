@@ -25,6 +25,8 @@ const isDataUrl = s => {
  */
 const processFile = (imageUrl, settings) => {
   const image = new Image();
+  image.crossOrigin = "anonymous";
+
   const config = {
     minImageSize: 320,
     maxImageSize: 1000,
@@ -32,8 +34,6 @@ const processFile = (imageUrl, settings) => {
     onLoad: () => {},
     ...settings
   };
-
-  if (!isDataUrl) image.crossOrigin = "anonymous";
 
   image.onload = () => {
     let ratio,

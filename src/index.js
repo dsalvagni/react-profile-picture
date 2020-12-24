@@ -142,11 +142,14 @@ class ProfilePicture extends Component {
       /**
        * Limit the area to drag horizontally
        */
-      if (imageData.imageWidth + dx >= this.props.cropSize) {
+      if (this.allowHorizontal() && imageData.imageWidth + dx >= this.props.cropSize) {
         imageData.imageX = dx;
         refresh = true;
       }
-      if (imageData.imageHeight + dy >= this.props.cropSize) {
+      /**
+       * Limit the area to drag vertically
+       */
+      if (this.allowVertical() && imageData.imageHeight + dy >= this.props.cropSize) {
         imageData.imageY = dy;
         refresh = true;
       }
@@ -160,19 +163,11 @@ class ProfilePicture extends Component {
 
   registerImageEvents() {
     ["mouseup", "touchend"].forEach(eName => {
-      window.addEventListener(
-        eName,
-        this.onMovingEnd,
-        false
-      );
+      window.addEventListener(eName, this.onMovingEnd, false);
     });
 
     ["mousemove", "touchmove"].forEach(eName => {
-      window.addEventListener(
-        eName,
-        this.onMoving,
-        false
-      );
+      window.addEventListener(eName, this.onMoving, false);
     });
   }
 
@@ -212,6 +207,16 @@ class ProfilePicture extends Component {
     this.resetState();
     this.props.onImageRemoved.call(this);
     this.debug("[onImageRemoved]");
+  }
+
+  allowHorizontal() {
+    if(!this.props.constraints) { return true; }
+    return this.props.constraints === 'horizontal';
+  }
+
+  allowVertical() {
+    if(!this.props.constraints) { return true; }
+    return this.props.constraints === 'vertical';
   }
 
   readFile(file) {
@@ -361,14 +366,14 @@ class ProfilePicture extends Component {
       case Status.INVALID_IMAGE_SIZE:
         return (
           <Message onClick={this.handleTapToSelect.bind(this)}>
-            {StatusMessage[this.state.status]}
+            {StatusMessage(this.props.messages, this.state.status)}
           </Message>
         );
       case Status.LOADED:
         return null;
 
       default:
-        return <Message>{StatusMessage[this.state.status]}</Message>;
+        return <Message>{StatusMessage(this.props.messages, this.state.status)}</Message>;
     }
   }
 
@@ -490,6 +495,8 @@ ProfilePicture.propTypes = {
   maxImageSize: PropTypes.number.isRequired,
   useHelper: PropTypes.bool.isRequired,
   debug: PropTypes.bool.isRequired,
+  messages: PropTypes.object,
+  constraints: PropTypes.oneOf(['horizontal', 'vertical']),
   // Callbacks
   onImagePropertiesChange: PropTypes.func,
   onImageLoading: PropTypes.func,
@@ -510,6 +517,12 @@ ProfilePicture.defaultProps = {
   maxImageSize: 1000,
   useHelper: false,
   debug: false,
+  messages: {
+    DEFAULT: "Drop your photo here or tap to select.",
+    DRAGOVER: "Drop your photo",
+    INVALID_FILE_TYPE: "Only images allowed.",
+    INVALID_IMAGE_SIZE: "Your photo must be larger than 350px."
+  },
   // Callbacks
   onImagePropertiesChange: () => {},
   onImageLoading: () => {},
