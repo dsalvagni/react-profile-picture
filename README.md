@@ -65,6 +65,27 @@ class App extends Component {
 | maxImageSize  | `PropTypes.number.isRequired`  |  Maximum image size desired. |
 | useHelper  | `PropTypes.bool.isRequired`  |  Enable/Disable the use of a background helper image.  |
 | debug  | `PropTypes.bool.isRequired`  | Enable/Disable logging events on console  |
+| messages  | `PropTypes.object`  | Custom status messages  |
+
+## Status Messages
+
+| Property  | Default Value | Description  |
+|---|---|---|
+| DEFAULT | Drop your photo here or tap to select. | Default states, when there's no phot selected |
+| DRAGOVER | Drop your photo | When the user is dragging the photo over the component |
+| INVALID_FILE_TYPE | Only images allowed. | File different from image type |
+| INVALID_IMAGE_SIZE | Your photo must be larger than 350px. | Invalid image size |
+
+### Status Message Object Example
+
+```
+messages: {
+  DEFAULT: "Drop your photo here or tap to select.",
+  DRAGOVER: "Drop your photo",
+  INVALID_FILE_TYPE: "Only images allowed.",
+  INVALID_IMAGE_SIZE: "Your photo must be larger than 350px."
+}
+```
 
 ## Callbacks
 
