@@ -142,11 +142,14 @@ class ProfilePicture extends Component {
       /**
        * Limit the area to drag horizontally
        */
-      if (!this.hasHConstraints() && imageData.imageWidth + dx >= this.props.cropSize) {
+      if (this.allowHorizontal() && imageData.imageWidth + dx >= this.props.cropSize) {
         imageData.imageX = dx;
         refresh = true;
       }
-      if (!this.hasVConstraints() && imageData.imageHeight + dy >= this.props.cropSize) {
+      /**
+       * Limit the area to drag vertically
+       */
+      if (!this.allowVertical() && imageData.imageHeight + dy >= this.props.cropSize) {
         imageData.imageY = dy;
         refresh = true;
       }
@@ -206,11 +209,13 @@ class ProfilePicture extends Component {
     this.debug("[onImageRemoved]");
   }
 
-  hasHConstraints() {
+  allowHorizontal() {
+    if(!this.props.constraints) { return true; }
     return this.props.constraints === 'horizontal';
   }
 
-  hasVConstraints() {
+  allowVertical() {
+    if(!this.props.constraints) { return true; }
     return this.props.constraints === 'vertical';
   }
 
