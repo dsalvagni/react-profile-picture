@@ -142,11 +142,11 @@ class ProfilePicture extends Component {
       /**
        * Limit the area to drag horizontally
        */
-      if (imageData.imageWidth + dx >= this.props.cropSize) {
+      if (!this.hasHConstraints() && imageData.imageWidth + dx >= this.props.cropSize) {
         imageData.imageX = dx;
         refresh = true;
       }
-      if (imageData.imageHeight + dy >= this.props.cropSize) {
+      if (!this.hasVConstraints() && imageData.imageHeight + dy >= this.props.cropSize) {
         imageData.imageY = dy;
         refresh = true;
       }
@@ -204,6 +204,14 @@ class ProfilePicture extends Component {
     this.resetState();
     this.props.onImageRemoved.call(this);
     this.debug("[onImageRemoved]");
+  }
+
+  hasHConstraints() {
+    return this.props.constraints === 'horizontal';
+  }
+
+  hasVConstraints() {
+    return this.props.constraints === 'vertical';
   }
 
   readFile(file) {
@@ -483,6 +491,7 @@ ProfilePicture.propTypes = {
   useHelper: PropTypes.bool.isRequired,
   debug: PropTypes.bool.isRequired,
   messages: PropTypes.object,
+  constraints: PropTypes.oneOf(['horizontal', 'vertical']),
   // Callbacks
   onImagePropertiesChange: PropTypes.func,
   onImageLoading: PropTypes.func,
