@@ -160,19 +160,11 @@ class ProfilePicture extends Component {
 
   registerImageEvents() {
     ["mouseup", "touchend"].forEach(eName => {
-      window.addEventListener(
-        eName,
-        this.onMovingEnd,
-        false
-      );
+      window.addEventListener(eName, this.onMovingEnd, false);
     });
 
     ["mousemove", "touchmove"].forEach(eName => {
-      window.addEventListener(
-        eName,
-        this.onMoving,
-        false
-      );
+      window.addEventListener(eName, this.onMoving, false);
     });
   }
 
@@ -361,14 +353,14 @@ class ProfilePicture extends Component {
       case Status.INVALID_IMAGE_SIZE:
         return (
           <Message onClick={this.handleTapToSelect.bind(this)}>
-            {StatusMessage[this.state.status]}
+            {StatusMessage(this.props.messages, this.state.status)}
           </Message>
         );
       case Status.LOADED:
         return null;
 
       default:
-        return <Message>{StatusMessage[this.state.status]}</Message>;
+        return <Message>{StatusMessage(this.props.messages, this.state.status)}</Message>;
     }
   }
 
@@ -490,6 +482,7 @@ ProfilePicture.propTypes = {
   maxImageSize: PropTypes.number.isRequired,
   useHelper: PropTypes.bool.isRequired,
   debug: PropTypes.bool.isRequired,
+  messages: PropTypes.object,
   // Callbacks
   onImagePropertiesChange: PropTypes.func,
   onImageLoading: PropTypes.func,
@@ -510,6 +503,12 @@ ProfilePicture.defaultProps = {
   maxImageSize: 1000,
   useHelper: false,
   debug: false,
+  messages: {
+    DEFAULT: "Drop your photo here or tap to select.",
+    DRAGOVER: "Drop your photo",
+    INVALID_FILE_TYPE: "Only images allowed.",
+    INVALID_IMAGE_SIZE: "Your photo must be larger than 350px."
+  },
   // Callbacks
   onImagePropertiesChange: () => {},
   onImageLoading: () => {},
