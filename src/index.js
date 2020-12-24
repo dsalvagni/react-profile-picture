@@ -149,7 +149,7 @@ class ProfilePicture extends Component {
       /**
        * Limit the area to drag vertically
        */
-      if (!this.allowVertical() && imageData.imageHeight + dy >= this.props.cropSize) {
+      if (this.allowVertical() && imageData.imageHeight + dy >= this.props.cropSize) {
         imageData.imageY = dy;
         refresh = true;
       }
@@ -211,12 +211,12 @@ class ProfilePicture extends Component {
 
   allowHorizontal() {
     if(!this.props.constraints) { return true; }
-    return this.props.constraints !== 'horizontal';
+    return this.props.constraints === 'horizontal';
   }
 
   allowVertical() {
     if(!this.props.constraints) { return true; }
-    return this.props.constraints !== 'vertical';
+    return this.props.constraints === 'vertical';
   }
 
   readFile(file) {
