@@ -47,7 +47,10 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/dsalvagni/react-profile-picture.git"
+    "url": "git+https://github.com/dsalvagni/react-profile-picture.git"
+  },
+  "bugs": {
+    "url": "https://github.com/dsalvagni/react-profile-picture/issues/new"
   },
   "license": "MIT"
 }
