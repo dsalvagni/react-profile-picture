@@ -12,6 +12,8 @@ Now you can install this package using NPM or Yarn.
 
 `npm i --save @dsalvagni/react-profile-picture`
 
+Read more at: https://github.com/dsalvagni/react-profile-picture/blob/v1.0.0/README.md
+
 
 ## Setup
 
