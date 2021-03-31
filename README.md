@@ -4,6 +4,14 @@
 
 ![demo gif](demo.gif)
 
+## NPM Package
+
+Now you can install this package using NPM or Yarn.
+
+`yarn add @dsalvagni/react-profile-picure` or
+
+`npm i --save @dsalvagni/react-profile-picture`
+
 
 ## Setup
 
