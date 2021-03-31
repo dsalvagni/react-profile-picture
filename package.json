@@ -2,6 +2,7 @@
   "name": "@dsalvagni/react-profile-picture",
   "version": "1.0.0",
   "description": "Simple way to change your profile picture",
+  "homepage": "https://salvagni.dev/react-profile-picture/",
   "main": "build/index.js",
   "dependencies": {
     "css-loader": "^1.0.1",
@@ -40,6 +41,10 @@
     "react",
     "component"
   ],
-  "author": "\" <dsalvagni>",
+  "author": {
+    "name": "Daniel Salvagni",
+    "email": "danielsalvagni@gmail.com",
+    "url": "https://salvagni.dev/"
+  },
   "license": "MIT"
 }
