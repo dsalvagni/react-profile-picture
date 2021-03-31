@@ -45,5 +45,9 @@
     "email": "danielsalvagni@gmail.com",
     "url": "https://salvagni.dev/"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dsalvagni/react-profile-picture.git"
+  },
   "license": "MIT"
 }
