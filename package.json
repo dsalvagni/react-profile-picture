@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Simple way to change your profile picture",
   "homepage": "https://salvagni.dev/react-profile-picture/",
-  "main": "build/index.js",
+  "main": "dist/index.js",
   "dependencies": {
     "css-loader": "^1.0.1",
     "extract-text-webpack-plugin": "^4.0.0-beta.0",
