@@ -8,19 +8,20 @@
 ## Setup
 
 The better option would be to add this component into your project by cloning this repository and building it yourself with the design changes that you might want to make. 
-*I'm not sure if this is going to be published on NPM*.
 
-Anyway, you can always add it to your project also by installing using NPM + Github:
+### :warning: Breaking changes
 
-`npm i --save git+https://github.com/dsalvagni/react-profile-picture.git`
+Starting from version 1.0.0, use this package installing from NPM or Yarn. 
+
+`yarn add @dsalvagni/react-profile-picture`
 
 ## Example
 
 ```
 import React, { Component } from 'react';
 
-import ProfilePicture from "profile-picture"
-import "profile-picture/build/ProfilePicture.css"
+import ProfilePicture from "@dsalvagni/react-profile-picture"
+import "@dsalvagni/react-profile-picture/dist/ProfilePicture.css"
 
 class App extends Component {
   constructor(props) {
