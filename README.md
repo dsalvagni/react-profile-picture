@@ -27,7 +27,7 @@ Anyway, you can always add it to your project also by installing using NPM + Git
 ## Example
 
 ```
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 
 import ProfilePicture from "profile-picture"
 import "profile-picture/build/ProfilePicture.css"
@@ -40,7 +40,7 @@ class App extends Component {
   }
 
   handleUpload() {
-    const PP = this.profilePicture.current;
+    const PP = this.profilePictureRef.current;
     const imageData = PP.getData();
     const file = imageData.file;
     const imageAsDataURL = PP.getImageAsDataUrl();
@@ -50,13 +50,17 @@ class App extends Component {
   }
 
   render() {
-    return <ProfilePicture
-      ref={this.profilePictureRef}
-      useHelper={true}
-      debug={true}
-    />
+    return (
+     <Fragment>
+        <ProfilePicture
+          ref={this.profilePictureRef}
+          useHelper={true}
+          debug={true}
+        />
 
-    <button onClick={this.handleUpload.bind(this)}>Upload</button>
+        <button onClick={this.handleUpload.bind(this)}>Upload</button>
+     </Fragment>
+    )
   }
 }
 ```
