@@ -26,7 +26,7 @@ Anyway, you can always add it to your project also by installing using NPM + Git
 
 ## Example
 
-```
+```jsx
 import React, { Component, Fragment } from 'react';
 
 import ProfilePicture from "profile-picture"
