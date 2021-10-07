@@ -1,6 +1,6 @@
 {
   "name": "@dsalvagni/react-profile-picture",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Simple way to change your profile picture",
   "homepage": "https://salvagni.dev/react-profile-picture/",
   "main": "dist/index.js",
