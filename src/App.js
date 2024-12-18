@@ -3,8 +3,8 @@ import { Prism as SyntaxHighlighter } from "react-syntax-highlighter";
 import { atomDark } from "react-syntax-highlighter/dist/styles/prism";
 import "./App.css";
 
-import ProfilePicture from "profile-picture";
-import "profile-picture/build/ProfilePicture.css";
+import ProfilePicture from "@dsalvagni/react-profile-picture";
+import "@dsalvagni/react-profile-picture";
 
 import example from "./example.jpg";
 
@@ -23,8 +23,8 @@ class App extends Component {
         DEFAULT: "Drop your photo here or tap to select.",
         INVALID_IMAGE_SIZE: "Your photo must be larger than 350px.",
         DRAGOVER: "Drop your photo",
-        INVALID_FILE_TYPE: "Only images allowed."
-      }
+        INVALID_FILE_TYPE: "Only images allowed.",
+      },
     };
   }
 
@@ -34,7 +34,7 @@ class App extends Component {
     const name = target.name;
 
     this.setState({
-      [name]: value
+      [name]: value,
     });
   }
 
@@ -46,8 +46,8 @@ class App extends Component {
     this.setState({
       messages: {
         ...this.state.messages,
-        [name]: value
-      }
+        [name]: value,
+      },
     });
   }
 
@@ -57,7 +57,7 @@ class App extends Component {
 
   handleClick() {
     this.setState({
-      image: this.profilePictureRef.current.getImageAsDataUrl()
+      image: this.profilePictureRef.current.getImageAsDataUrl(),
     });
   }
 
@@ -173,42 +173,42 @@ class App extends Component {
             <li>
               <strong>Messages</strong>
               <ul>
-              <li>
-              <input
-                type="text"
-                name="DEFAULT"
-                placeholder="Drop your photo here or tap to select."
-                value={this.state.messages.DEFAULT}
-                onChange={this.handleMessageChange.bind(this)}
-              />
-              </li>
-              <li>
-              <input
-                type="text"
-                name="INVALID_FILE_TYPE"
-                placeholder="Only images allowed."
-                value={this.state.messages.INVALID_FILE_TYPE}
-                onChange={this.handleMessageChange.bind(this)}
-              />
-              </li>
-              <li>
-              <input
-                type="text"
-                name="INVALID_IMAGE_SIZE"
-                placeholder="Your photo must be larger than 350px."
-                value={this.state.messages.INVALID_IMAGE_SIZE}
-                onChange={this.handleMessageChange.bind(this)}
-              />
-              </li>
-              <li>
-              <input
-                type="text"
-                name="DRAGOVER"
-                placeholder="Drop your photo"
-                value={this.state.messages.DRAGOVER}
-                onChange={this.handleMessageChange.bind(this)}
-              />
-              </li>
+                <li>
+                  <input
+                    type="text"
+                    name="DEFAULT"
+                    placeholder="Drop your photo here or tap to select."
+                    value={this.state.messages.DEFAULT}
+                    onChange={this.handleMessageChange.bind(this)}
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="INVALID_FILE_TYPE"
+                    placeholder="Only images allowed."
+                    value={this.state.messages.INVALID_FILE_TYPE}
+                    onChange={this.handleMessageChange.bind(this)}
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="INVALID_IMAGE_SIZE"
+                    placeholder="Your photo must be larger than 350px."
+                    value={this.state.messages.INVALID_IMAGE_SIZE}
+                    onChange={this.handleMessageChange.bind(this)}
+                  />
+                </li>
+                <li>
+                  <input
+                    type="text"
+                    name="DRAGOVER"
+                    placeholder="Drop your photo"
+                    value={this.state.messages.DRAGOVER}
+                    onChange={this.handleMessageChange.bind(this)}
+                  />
+                </li>
               </ul>
             </li>
           </ul>

@@ -5,7 +5,7 @@
   "homepage": "https://salvagni.dev/react-profile-picture",
   "dependencies": {
     "gh-pages": "^2.0.1",
-    "profile-picture": "git+https://github.com/dsalvagni/react-profile-picture.git",
+    "@dsalvagni/react-profile-picture": "^1.0.1",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
     "react-script-tag": "^1.1.2",
